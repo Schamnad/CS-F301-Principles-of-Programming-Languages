@@ -1,0 +1,31 @@
+DEFINE on AS 1.
+DEFINE off AS 0.
+DEFINE threshold_humidity AS 50.
+DEFINE threshold_luminosity AS 30.
+DEFINE threshold_enginetemp AS 70.
+
+
+FUNC climatecontrol() :
+	SENSOR Humidity $h.
+	SENSOR Enginetemp $et.
+	SENSOR Luminosity $l.
+	$h = GETREADING().
+	$et = GETREADING().
+	$l = GETREADING().
+	REPEAT :
+		IF $h GREATERTHAN threshold_humidity
+			OUTWIPERS(on).
+		ENDIF
+		IF $et GREATERTHAN threshold_enginetemp
+			OUTCOOLANT(on).
+		ENDIF
+		IF $l GREATERTHAN threshold_luminosity
+			OUTLIGHTS(on).
+		ENDIF
+		
+	ENDREPEAT
+
+
+ENDFUNC
+
+RUN climatecontrol().

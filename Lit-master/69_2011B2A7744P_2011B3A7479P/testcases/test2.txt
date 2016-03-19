@@ -1,0 +1,55 @@
+FUNC optimumshift() :
+	SENSOR Speed $s.
+	SENSOR Gear $g.
+	REPEAT :
+		$s = GETREADING().
+		IF accelerating() EQUALS 1
+			IF $g EQUALS 1 AND $s GREATERTHAN 10
+			OUT('Shift Up!').
+			ENDIF
+			IF $g EQUALS 2 AND $s GREATERTHAN 20
+			OUT('Shift Up!').
+			ENDIF
+			IF $g EQUALS 3 AND $s GREATERTHAN 30
+			OUT('Shift Up!').
+			ENDIF
+			IF $g EQUALS 4 AND $s GREATERTHAN 40
+			OUT('Shift Up!').
+		ENDIF
+		
+		IF accelerating() EQUALS 0
+			IF $g EQUALS 2 AND $s LESSTHAN 10
+			OUT('Shift Down!').
+			ENDIF
+			IF $g EQUALS 3 AND $s LESSTHAN 20
+			OUT('Shift Down!').
+			ENDIF
+			IF $g EQUALS 4 AND $s LESSTHAN 30
+			OUT('Shift Down!').
+			ENDIF
+			IF $g EQUALS 5 AND $s LESSTHAN 40
+			OUT('Shift Down!').
+		ENDIF
+		
+		ENDIF
+		
+		
+	ENDREPEAT
+
+ENDFUNC
+
+
+FUNC accelerating() :
+	TIME $t1,$t2.
+	SENSOR Speed $curr_s,$prev_s.
+	$prev_s = GETREADING().
+	$t1 = GETREADING().
+	$t2 = GETREADING().
+	$curr_s = GETREADING().
+	IF $curr_s GREATERTHAN $prev_s:
+		RETURN 1.
+	ENDIF
+	RETURN 0.
+ENDFUNC
+
+RUN optimumshift().

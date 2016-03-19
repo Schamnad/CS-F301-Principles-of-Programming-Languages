@@ -1,0 +1,186 @@
+Keyword:-		              FUNC 
+Identifier:-		optimumshift() 
+Special symbol:-		         : 
+Keyword:-		            SENSOR 
+Keyword:-		             Speed 
+Identifier:-		            $s 
+Special symbol:-		         . 
+Keyword:-		            SENSOR 
+Keyword:-		              Gear 
+Identifier:-		            $g 
+Special symbol:-		         . 
+Keyword:-		            REPEAT 
+Special symbol:-		         : 
+Identifier:-		            $s 
+Operator:-                     = 
+Keyword:-		      GETREADING() 
+Special symbol:-		         . 
+Keyword:-		                IF 
+Identifier:-		accelerating() 
+Keyword:-		            EQUALS 
+Constant:-		                 1 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 1 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		       GREATERTHAN 
+Constant:-		                10 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		       'Shift Up!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 2 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		       GREATERTHAN 
+Constant:-		                20 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		       'Shift Up!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 3 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		       GREATERTHAN 
+Constant:-		                30 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		       'Shift Up!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 4 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		       GREATERTHAN 
+Constant:-		                40 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		       'Shift Up!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		accelerating() 
+Keyword:-		            EQUALS 
+Constant:-		                 0 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 2 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		          LESSTHAN 
+Constant:-		                10 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		     'Shift Down!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 3 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		          LESSTHAN 
+Constant:-		                20 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		     'Shift Down!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 4 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		          LESSTHAN 
+Constant:-		                30 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		     'Shift Down!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		                IF 
+Identifier:-		            $g 
+Keyword:-		            EQUALS 
+Constant:-		                 5 
+Keyword:-		               AND 
+Identifier:-		            $s 
+Keyword:-		          LESSTHAN 
+Constant:-		                40 
+Keyword:-		               OUT 
+Special symbol:-		         ( 
+Constant:-		     'Shift Down!' 
+Special symbol:-		         ) 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		             ENDIF 
+Keyword:-		         ENDREPEAT 
+Keyword:-		           ENDFUNC 
+Keyword:-		              FUNC 
+Identifier:-		accelerating() 
+Special symbol:-		         : 
+Keyword:-		              TIME 
+Identifier:-		           $t1 
+Special symbol:-		         , 
+Identifier:-		           $t2 
+Special symbol:-		         . 
+Keyword:-		            SENSOR 
+Keyword:-		             Speed 
+Identifier:-		       $curr_s 
+Special symbol:-		         , 
+Identifier:-		       $prev_s 
+Special symbol:-		         . 
+Identifier:-		       $prev_s 
+Operator:-                     = 
+Keyword:-		      GETREADING() 
+Special symbol:-		         . 
+Identifier:-		           $t1 
+Operator:-                     = 
+Keyword:-		      GETREADING() 
+Special symbol:-		         . 
+Identifier:-		           $t2 
+Operator:-                     = 
+Keyword:-		      GETREADING() 
+Special symbol:-		         . 
+Identifier:-		       $curr_s 
+Operator:-                     = 
+Keyword:-		      GETREADING() 
+Special symbol:-		         . 
+Keyword:-		                IF 
+Identifier:-		       $curr_s 
+Keyword:-		       GREATERTHAN 
+Identifier:-		       $prev_s 
+Special symbol:-		         : 
+Keyword:-		            RETURN 
+Constant:-		                 1 
+Special symbol:-		         . 
+Keyword:-		             ENDIF 
+Keyword:-		            RETURN 
+Constant:-		                 0 
+Special symbol:-		         . 
+Keyword:-		           ENDFUNC 
+Keyword:-		               RUN 
+Identifier:-		optimumshift() 
+Special symbol:-		         . 

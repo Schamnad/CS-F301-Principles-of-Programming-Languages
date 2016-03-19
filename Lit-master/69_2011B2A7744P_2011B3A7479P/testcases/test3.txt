@@ -1,0 +1,37 @@
+DEFINE default_oxygen_sensor AS 50.
+DEFINE default_throttle_sensor AS 0.
+DEFINE default_torque_sensor AS 0.
+DEFINE default_brakepressure_sensor AS 77.
+DEFINE ready AS 2.
+DEFINE on AS 1.
+DEFINE off AS 0.
+
+FUNC caliberationcheck() :
+	SENSOR Oxygen $o.
+	SENSOR Throttle $th.
+	SENSOR Torque $tq.
+	SENSOR Brakepressure $bp.
+
+	$o = GETREADING().
+	$th = GETREADING().
+	$tq = GETREADING().
+	$bp = GETREADING().
+
+	IF $o EQUALS default_oxygen_sensor AND $th EQUALS default_throttle_sensor AND $tq EQUALS default_torque_sensor AND $bp EQUALS default_brakepressure_sensor : 
+		RETURN 1.
+	ENDIF
+	
+	RETURN 0.
+ENDFUNC
+
+
+SENSOR Enginestatus $es.
+$es = GETREADING().
+IF $es EQUALS ready :
+	IF caliberationcheck() EQUALS 1 :
+		OUT('All Sensors Caliberated. Ready to start!').
+	ENDIF
+	IF caliberationcheck() EQUALS 0 :
+		OUT('Caliberation Error!').
+	ENDIF
+ENDIF 
