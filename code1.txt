@@ -1,0 +1,40 @@
+# Sanjeed Schamnad & Shiva Manne  #
+# 2011B2A7744P       2011B3A7479P #	
+# The solution to problem descirption one is provided below #
+
+
+FUNC fillgaswarning ($mileage) :
+	SENSOR FuelLevel $fl.
+	DISTANCE $d.
+	fl = GETREADING().
+	d = NAVIGATOR(GET DISTANCE TO CLOSEST 'GASSTATION' FROM NAVIGATOR(GET CLOSEST 'GASSTATION')).
+	IF d GREATERTHAN $fl * $mileage:
+		OUT('Fill Gas at next Gas Station!').
+	ENDIF
+	
+ENDFUNC
+
+FUNC getmileage () :
+	SENSOR FuelLevel $prev_fl,$present_fl,$init_fl.
+	SENSOR Odometer $init_s,$curr_s.
+	$init_s = GETREADING().
+	$init_fl = GETREADING().
+	$prev_fl = GETREADING().
+	REPEAT :
+		$present_fl = GETREADING().
+		IF $present_fl NOTGREATERTHAN $prev_fl:
+			$prev_fl = $present_fl.
+		ENDIF
+		IF $present_fl GREATERTHAN $prev_fl:
+			ESCAPE.
+		ENDIF
+	
+	ENDREPEAT
+	$curr_s = GETREADING().
+	RETURN ($curr_s-$init_s)/($init_fl-$prev_fl).
+	
+ENDFUNC
+
+
+
+RUN fillgaswarning(getmileage()).
